@@ -1,0 +1,418 @@
+<apex:page showHeader="false" applyHtmlTag="false" controller="TargetX_Base.TX_CommunitiesBase" doctype="html" standardStylesheets="false" sidebar="false">
+<apex:variable var="static_files" value="{!$Resource[staticResource]}"/>
+
+<apex:variable var="header_school" value="Franciscan University of Steubenville"/>
+<apex:variable var="header_school_line_1" value="Franciscan University"/>
+<apex:variable var="header_school_line_2" value="of Steubenville"/>
+<apex:variable var="header_program" value="Online Application"/>
+
+<!--[if IE 8]>         <html class="no-js lt-ie10 lt-ie9 ie8" lang="en"> <![endif]-->
+<!--[if IE 9]>         <html class="no-js lt-ie10 ie9" lang="en"> <![endif]-->
+<!--[if gt IE 9]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<html lang="en">
+<head>
+    <meta charset="utf-8"></meta>
+    <title>{!header_school}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0"></meta>
+    <link rel="apple-touch-icon" href="../../../images/touch-icon-iphone.png" />
+    <link rel="apple-touch-icon" sizes="76x76" href="../../../images/touch-icon-ipad.png" />
+    <link rel="apple-touch-icon" sizes="120x120" href="../../../images/touch-icon-iphone-retina.png" />
+    <link rel="apple-touch-icon" sizes="152x152" href="../../../images/touch-icon-ipad-retina.png" />
+
+    <apex:insert name="jquery">
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script>
+    </apex:insert>
+
+    <apex:insert name="bootstrap">
+        <link rel="stylesheet" href="{!static_files}/css/bootstrap.css"/>
+        <script src="{!static_files}/js/bootstrap.min.js"></script>
+    </apex:insert>
+
+    <apex:insert name="css">
+        <link rel="stylesheet" href="{!static_files}/css/targetx-ui.css" />
+        <link rel="stylesheet" href="{!static_files}/css/targetx.css" />
+    </apex:insert>
+
+    <apex:insert name="js">
+        <script src="{!static_files}/js/targetx-libs.js"></script>
+        <script src="{!static_files}/js/targetx-application.js"></script>
+    </apex:insert>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet" />
+    <style>
+    html body {
+      font-family: 'Roboto', sans-serif !important;
+    }
+
+    a, a:hover, a:focus, a:visited {
+      text-decoration: none !important;
+    }
+
+    /* Think about changing link color. Maybe the blue used on the bulletin. I don't think this is even working. */
+    a:not(.targetx-button-header, .targetx-button-header), a:hover:not(.targetx-button-header, .targetx-button-header), a:focus:not(.targetx-button-header, .targetx-button-header), a:visited:not(.targetx-button-header, .targetx-button-header) {
+      color: hsla(40,100%,56%,1) !important;
+    }
+
+    /* Nav Bar styles */
+    .navbar {
+      border: none;
+      border-bottom: 3px solid #998643;
+      box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12), 0 3px 1px -2px rgba(0,0,0,.2);
+    }
+
+    .navbar-default .mycontainer .targetx-header-university-icon {
+      background-image: url(https://rc.franciscan.university/static/media/fus-logo.5e5882da.svg);
+      background-repeat: no-repeat;
+      background-size: contain;
+      width: 150px;
+      height: 53px;
+      display: inline-block;
+    }
+
+    .targetx-header-back::after {
+      color: #21412a !important;
+    }
+
+    .targetx-header-back:hover:after, .targetx-header-back:active:after, .targetx-header-back:visited:after {
+      color: #21412a !important;
+      -webkit-transform: none !important;
+      transform: none !important;
+    }
+
+    .targetx-header-user span:before {
+      content: '';
+    }
+
+    .targetx-header-calendar, .targetx-header-email, .targetx-header-print, .targetx-header-review, .targetx-header-user, .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus, .targetx-header-university-name {
+      color: #21412a;
+    }
+
+    /* Consider using the default gray font color. */
+    .targetx-header-university-program {
+      color: #21412a;
+    }
+
+    .navbar-default .navbar-toggle {
+      border-color: transparent;
+    }
+
+    .navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
+      background-color: transparent;
+    }
+
+    .navbar-default .navbar-toggle .icon-bar {
+      background-color: #21412a;
+    }
+
+    .navbar-toggle .icon-bar {
+      border-radius: 0;
+    }
+
+    /* Interior TopNav */
+    body .targetx-header-university-icon {
+      background-image: url("https://rc.franciscan.university/static/media/fus-logo.5e5882da.svg");
+      background-size: contain;
+      background-repeat: no-repeat;
+      width: 94px;
+      height: 33px;
+      /*display: block;*/
+    }
+
+    body .targetx-header-university-info {
+      font-size: 24px;
+      margin-bottom: 16px;
+    }
+
+    @media screen and (min-width: 768px) {
+      body .targetx-header-university-icon {
+        width: 150px;
+        height: 113px;
+      }
+    }
+    /* End Nav Bar Styles */
+
+    /* Sidebar */
+    .targetx-application-sidebar {
+      background-color: #fff !important;
+    }
+
+    .targetx-application-sidebar h1, .targetx-application-sidebar h2, .targetx-application-sidebar .targetx-application-nav-header {
+      color: rgba(0, 0, 0, 0.54) !important;
+    }
+
+    .targetx-application-sidebar .targetx-application-hamburger-nav .hamburger-menu-bar {
+      background-color: #21412a;
+    }
+
+    .targetx-nav-circle {
+      background-color: rgba(0, 0, 0, .08);
+    }
+
+
+    /* End Sidebar */
+
+    /* Card Styles */
+    .targetx-application-form-slide, .targetx-card {
+      border-radius: 2px;
+      box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12), 0 3px 1px -2px rgba(0,0,0,.2);
+    }
+
+    .targetx-application-form-title {
+      margin-bottom: 24px;
+    }
+
+    /* Input Styles */
+    .targetx-application-form-slide label input:focus {
+      border-bottom: 2px solid hsla(40,100%,56%,1);
+    }
+
+    .targetx-select-box-icon:after {
+      color: #21412a !important;
+    }
+
+    /* Button Styles */
+    .targetx-button, .targetx-button-header {
+      background-color: hsla(40,100%,56%,1) !important;
+      box-shadow: none;
+      border: none;
+      border-radius: 2px !important;
+      padding: 8px 16px !important;
+      font-weight: 500 !important;
+      font-family: 'Roboto', sans-serif !important;
+      font-size: 16px !important;
+      color: #fff !important;
+      margin-top: 16px;
+      -webkit-transition: .2s ease-out;
+      transition: .2s ease-out;
+      cursor: pointer;
+      letter-spacing: .5px;
+      text-transform: uppercase;
+      text-decoration: none;
+      box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12), 0 3px 1px -2px rgba(0,0,0,.2) !important;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+      outline: 0;
+      outline-color: initial;
+      outline-style: initial;
+      outline-width: 0;
+      -webkit-appearance: none;
+    }
+
+    @media screen and (max-width: 767px) {
+      .targetx-button-header {
+        padding: 4px 12px !important;
+        margin-top: 7px;
+      }
+    }
+
+    .targetx-button:hover, .targetx-button:focus, .targetx-button-header:hover, .targetx-button-header:focus {
+      padding: 8px 16px;
+      font-size: 16px;
+      background-color: rgba(255,198,88,.85);
+      color: #fff;
+      box-shadow: 0 3px 3px 0 rgba(0,0,0,.14), 0 1px 7px 0 rgba(0,0,0,.12), 0 3px 1px -1px rgba(0,0,0,.2) !important;
+    }
+
+    .targetx-button:active, .targetx-button-header:active, .targetx-button-secondary:active {
+      top: 0 !important;
+    }
+
+    /* Application Styles */
+    .targetx-application-percentage-container span:not(.targetx-application-percentage-number) {
+      font-size: 16px;
+    }
+
+    /* Required Bars */
+    .targetx-required {
+      border-left: 3px solid;
+      padding-left: 8px;
+    }
+
+    .targetx-input-label.targetx-required:before {
+      display: none !important;
+    }
+    </style>
+</head>
+
+<body>
+
+    <apex:insert name="header">
+        <nav class="navbar navbar-default navbar-fixed-top">
+          <div class="mycontainer"> <!-- update this css -->
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+                <div class="targetx-header-university">
+                    <div class="targetx-header-university-icon"></div>
+                    <div class="targetx-header-university-info">
+                        <span class="targetx-header-university-name">{!header_school}</span>
+                        <span class="targetx-header-university-program">{!header_program}</span>
+                    </div>
+                </div>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+              <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <apex:outputLink rendered="{!ISPICKVAL($User.UserType,'Guest')}" value="{!$Page.TX_CommunitiesSelfReg}" styleClass="targetx-header-user">
+                        <span> Sign Up</span>
+                    </apex:outputLink>
+                    <apex:outputLink rendered="{!NOT(ISPICKVAL($User.UserType,'Guest'))}" value="{!$Site.Prefix}/TX_MyProfilePage" styleClass="targetx-header-user">
+                        <span> My Profile</span>
+                    </apex:outputLink>
+                </li>
+                <li>
+                    <apex:outputLink rendered="{!ISPICKVAL($User.UserType,'Guest')}" value="{!$Page.TX_CommunitiesHome}" styleClass="targetx-header-user">
+                        <span> Log In</span>
+                    </apex:outputLink>
+                    <apex:outputLink rendered="{!NOT(ISPICKVAL($User.UserType,'Guest'))}" value="/secur/logout.jsp" styleClass="targetx-header-user">
+                        <span> Sign Out</span>
+                    </apex:outputLink>
+                </li>
+              </ul>
+            </div><!--/.nav-collapse -->
+          </div>
+        </nav>
+        <!--
+        <div class="targetx-header">
+            <div class="targetx-header-university">
+                <div class="targetx-header-university-icon"></div>
+                <div class="targetx-header-university-info">
+                    <span class="targetx-header-university-name">{!header_school}</span>
+                    <span class="targetx-header-university-program">{!header_program}</span>
+                </div>
+            </div>
+            <apex:outputLink rendered="{!NOT(ISPICKVAL($User.UserType,'Guest'))}" value="/secur/logout.jsp" styleClass="targetx-header-user">
+                <span> Sign Out</span>
+            </apex:outputLink>
+            <apex:outputLink rendered="{!NOT(ISPICKVAL($User.UserType,'Guest'))}" value="{!$Site.Prefix}/TX_MyProfilePage" styleClass="targetx-header-user">
+                <span> My Profile</span>
+            </apex:outputLink>
+            <apex:outputLink rendered="{!ISPICKVAL($User.UserType,'Guest')}" value="{!$Page.TX_CommunitiesHome}" styleClass="targetx-header-user">
+                <span> Sign In</span>
+            </apex:outputLink>
+            <apex:outputLink rendered="{!ISPICKVAL($User.UserType,'Guest')}" value="{!$Page.TX_CommunitiesSelfReg}" styleClass="targetx-header-user">
+                <span> Sign Up</span>
+            </apex:outputLink>
+            <!--
+            <a href="" class="targetx-header-user">
+                <span> Welcome, {!$Currentuser.Name}</span>
+            </a>
+            <a href="" class="targetx-header-calendar">
+                <span> View Calendar</span>
+            </a>
+
+
+            <a href="" class="targetx-header-menu"><span></span></a>
+        </div>
+        -->
+    </apex:insert>
+    <div class="targetx-dashboard">
+        <!-- <apex:insert name="hero">
+            <div class="targetx-dashboard-hero">
+                <div class="targetx-dashboard-hero-info">
+                    <div class="targetx-dashboard-hero-icon-container">
+                        <div class="targetx-dashboard-hero-icon"></div>
+                    </div>
+                    <div class="targetx-dashboard-hero-university">
+                        <div class="targetx-dashboard-hero-university-name"><div class="targetx-dashboard-hero-university-name-inner">{!header_school_line_1}</div><br/><div class="targetx-dashboard-hero-university-name-inner">{!header_school_line_2}</div></div>
+
+                    </div>
+                </div>
+            </div>
+        </apex:insert> -->
+        <apex:insert name="content">
+            <div class="targetx-dashboard-widgets">
+                <div class="targetx-dashboard-widget targetx-application-percentage-widget" data-link="application.html?card=11">
+                    <div class="targetx-dashboard-widget-header">
+                        My Application
+                    </div>
+                    <div class="targetx-dashboard-widget-body">
+                        <div class="targetx-application-percentage-container">
+                            <span class="targetx-application-percentage-date">Due on <span>march 28, 2015</span></span>
+                            <div class="targetx-application-percentage">
+                                <div class="targetx-application-percentage-info">
+                                    <span class="targetx-application-percentage-number">85<sup>%</sup></span><br/>
+                                    <span class="targetx-application-percentage-complete">complete</span>
+                                </div>
+                            </div>
+                            <span class="targetx-application-percentage-disclaimer">It will take about 10 minutes to<br/>finalize your application</span>
+                            <a href="application.html?card=11" class="targetx-button">Finish your application</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="targetx-dashboard-widget targetx-application-tracker">
+                    <div class="targetx-dashboard-widget-header">
+                        Application Tracker
+                    </div>
+                    <div class="targetx-dashboard-widget-body">
+                        <ul class="targetx-application-tracker-documents">
+                            <li class="targetx-received">Your high school transcript has been received</li>
+                            <li class="targetx-missing">We have still not recieved your recent SAT scores</li>
+                            <li class="targetx-missing">Your final essay is due in 7 days</li>
+                            <li class="targetx-received">Your recommendation letter has been received</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="targetx-dashboard-widget targetx-scheduled-events">
+                    <div class="targetx-dashboard-widget-header">
+                        Scheduled Events
+                    </div>
+                    <div class="targetx-dashboard-widget-body">
+                        <ul class="targetx-scheduled-events-list">
+                            <li>
+                                <div class="targetx-scheduled-event-calendar">21</div>
+                                <div class="targetx-scheduled-event-info">
+                                    <span class="targetx-scheduled-event-date">Saturday, March 21, 2015</span>
+                                    <span class="targetx-scheduled-event-title">Open House</span>
+                                    <a href="" class="targetx-scheduled-event-link">View Event</a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="targetx-scheduled-event-calendar">27</div>
+                                <div class="targetx-scheduled-event-info">
+                                    <span class="targetx-scheduled-event-date">Friday, March 27, 2015</span>
+                                    <span class="targetx-scheduled-event-title">FAQ Webinar</span>
+                                    <a href="" class="targetx-scheduled-event-link">View Event</a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="targetx-scheduled-event-calendar">28</div>
+                                <div class="targetx-scheduled-event-info">
+                                    <span class="targetx-scheduled-event-date">Saturday, March 28, 2015</span>
+                                    <span class="targetx-scheduled-event-title">Applications Due</span>
+                                    <a href="" class="targetx-scheduled-event-link">View Event</a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="targetx-scheduled-event-calendar">11</div>
+                                <div class="targetx-scheduled-event-info">
+                                    <span class="targetx-scheduled-event-date">Saturday, April 11, 2015</span>
+                                    <span class="targetx-scheduled-event-title">College of Arts &amp; Sciences Fees Due</span>
+                                    <a href="" class="targetx-scheduled-event-link">View Event</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </apex:insert>
+    </div>
+
+    <apex:insert name="footer"/>
+
+    <style>
+        <apex:outputText escape="false" value="{!customCss}"/>
+    </style>
+
+</body>
+</html>
+<!--[if gt IE 9]><!--> </html> <!--<![endif]-->
+
+</apex:page>

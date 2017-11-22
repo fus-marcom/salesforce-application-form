@@ -1,0 +1,141 @@
+/* Dashboard Styles */
+
+.portal-header__brand {
+display: -webkit-box;
+display: -webkit-flex; 
+display: -ms-flexbox;
+display: flex;
+-webkit-box-align: center;
+-webkit-align-items: center;
+-ms-flex-align: center;
+align-items: center;
+background-image: url(https://rc.franciscan.university/static/media/fus-logo.5e5882da.svg);
+background-size: contain;
+background-repeat: no-repeat;
+height: 60px;
+width: 100%;
+margin-left: 8px;
+}
+
+.portal-header__logo {
+display: none !important;
+}
+
+.portal-header {
+height: 80px;
+background: #fff;
+border-bottom: 3px solid #998643;
+box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 6px, rgba(0, 0, 0, 0.12) 0px 1px 4px;
+margin-bottom: 5px;
+}
+
+.portal-hero {
+display: none !important;
+}
+
+.portal .section-header {
+background: transparent !important;
+}
+
+.portal-block__link {
+font-family: Roboto;
+font-weight: 500;
+font-size: 13px;
+color: #3B9BDC;
+text-align: center;
+text-decoration: none;
+font-size: 16px;
+}
+
+.portal-block.my-events {
+display: none !important;
+}
+
+
+
+
+
+/* Updating the hero image
+.targetx-dashboard-hero {
+
+} */
+
+
+/*Top left corner logo image
+.targetx-header-university-icon {
+background-image: url("https://rc.franciscan.university/static/media/fus-logo.5e5882da.svg");
+}*/
+
+
+/* Header color
+.targetx-header {
+color: #66000 !important;
+}*/
+
+
+/* Standard button color
+.targetx-button {
+background-color: #660000 !important;
+box-shadow: 0 2px 0 red;
+}*/
+
+
+/* Changing the style of the “required” fields
+.targetx-input-label.targetx-required:before {
+font-family: "Times";
+display: inline-block;
+font-weight: normal;
+font-style: normal;
+text-decoration: inherit;
+content: "\27A5";
+position: absolute;
+font-size: 5px;
+left: -10px;
+top: -4px;
+vertical-align: middle;
+color: #585e69;
+font-size: 25px;
+left: -31px;
+color: #d81118;
+} */
+
+
+/* Change the style of a section header that has required fields
+.targetx-section-header .targetx-required:before {
+font-family: "targetx-icons";
+display: inline-block;
+font-weight: normal;
+font-style: normal;
+text-decoration: inherit;
+content: "\27A5";
+position: absolute;
+font-size: 21px;
+left: -27px;
+top: -5px;
+-webkit-transform: translateY(-2px);
+transform: translateY(-2px);
+vertical-align: middle;
+color: #585e69;
+color: rgb(216, 17, 24);
+} */
+
+/* Hiding the University Name and Logo from overlapping with the hero image
+div.targetx-dashboard-hero-info {
+display:none;
+}*/
+
+
+/* Align the text for radio buttons
+
+.radio .outer {
+margin-right: 10px;
+}
+
+.targetx-option-label {
+display: flex;
+padding-left: 0 !important;
+}
+
+label.radio {
+margin-bottom: 15px;
+} */
